@@ -152,19 +152,50 @@
 </div>
 
 <script>
-    document.getElementById("loc1").innerText =
-        localStorage.getItem("loc1") || "Rohini Clinic";
+    const clinics = [
+        {
+            nameId: "loc1",
+            data: JSON.parse(localStorage.getItem("clinic1")) || {
+                name: "Rohini Clinic",
+                address: "C8/54, Sector 8, Rohini",
+                time: "8:30 AM onwards",
+                days: "Monday & Friday"
+            }
+        },
+        {
+            nameId: "loc2",
+            data: JSON.parse(localStorage.getItem("clinic2")) || {
+                name: "Janak Puri Clinic",
+                address: "C-4C, 368, Adjacent to Khushwaha Bakery, Janak Puri",
+                time: "8:30 AM onwards",
+                days: "Tuesday & Saturday"
+            }
+        },
+        {
+            nameId: "loc3",
+            data: JSON.parse(localStorage.getItem("clinic3")) || {
+                name: "Hastsal Clinic",
+                address: "386, Group-1, Janta Flats, Hastsal",
+                time: "8:30 AM onwards",
+                days: "Thursday"
+            }
+        }
+    ];
 
-    document.getElementById("loc2").innerText =
-        localStorage.getItem("loc2") || "Janak Puri Clinic";
+    clinics.forEach((clinic, index) => {
+        document.getElementById(`loc${index+1}`).innerText = clinic.data.name;
 
-    document.getElementById("loc3").innerText =
-        localStorage.getItem("loc3") || "Hastsal Clinic";
+        document.querySelectorAll(".card")[index].querySelector("p").innerHTML =
+            `📍 ${clinic.data.address}<br>
+             ⏰ ${clinic.data.time}<br>
+             📅 ${clinic.data.days}`;
+    });
 
     document.getElementById("announcement").innerText =
         localStorage.getItem("announcement") ||
         "🩺 Clinic timings start from 8:30 AM. Please check location-wise visiting days.";
 </script>
+
 
 </body>
 </html>
