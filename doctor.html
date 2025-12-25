@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Doctor Admin Panel</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f1f5f9;
+        padding: 20px;
+    }
+    .container {
+        max-width: 700px;
+        margin: auto;
+        background: #ffffff;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    h2 {
+        text-align: center;
+        color: #1f2937;
+    }
+    input, textarea, button {
+        width: 100%;
+        padding: 12px;
+        margin-top: 10px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+    }
+    button {
+        background: #2563eb;
+        color: #fff;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        border: none;
+        margin-top: 15px;
+    }
+    button:hover {
+        background: #1e40af;
+    }
+    .hidden {
+        display: none;
+    }
+    .error {
+        color: red;
+        text-align: center;
+        margin-top: 10px;
+    }
+</style>
+</head>
+
+<body>
+<div class="container">
+
+    <!-- Login Section -->
+    <div id="loginBox">
+        <h2>Doctor Login</h2>
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+        <button onclick="login()">Login</button>
+        <div id="error" class="error"></div>
+    </div>
+
+    <!-- Admin Panel -->
+    <div id="adminPanel" class="hidden">
+        <h2>Clinic Management</h2>
+
+        <label>Clinic Name 1</label>
+        <input id="loc1" placeholder="Rohini Clinic">
+
+        <label>Clinic Name 2</label>
+        <input id="loc2" placeholder="Janak Puri Clinic">
+
+        <label>Clinic Name 3</label>
+        <input id="loc3" placeholder="Hastsal Clinic">
+
+        <label>Announcement</label>
+        <textarea id="announcement" rows="4"
+            placeholder="Any important update for patients"></textarea>
+
+        <button onclick="saveData()">Save Changes</button>
+    </div>
+</div>
+
+<script>
+    function login() {
+        const user = document.getElementById("username").value;
+        const pass = document.getElementById("password").value;
+
+        if (user === "doctor" && pass === "doctor123") {
+            document.getElementById("loginBox").style.display = "none";
+            document.getElementById("adminPanel").classList.remove("hidden");
+            loadData();
+        } else {
+            document.getElementById("error").innerText = "Invalid username or password";
+        }
+    }
+
+    function loadData() {
+        document.getElementById("loc1").value = localStorage.getItem("loc1") || "";
+        document.getElementById("loc2").value = localStorage.getItem("loc2") || "";
+        document.getElementById("loc3").value = localStorage.getItem("loc3") || "";
+        document.getElementById("announcement").value =
+            localStorage.getItem("announcement") || "";
+    }
+
+    function saveData() {
+        localStorage.setItem("loc1", document.getElementById("loc1").value);
+        localStorage.setItem("loc2", document.getElementById("loc2").value);
+        localStorage.setItem("loc3", document.getElementById("loc3").value);
+        localStorage.setItem("announcement", document.getElementById("announcement").value);
+
+        alert("✅ Changes saved successfully!");
+    }
+</script>
+
+</body>
+</html>
