@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Doctor Appointment</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(120deg, #f0f4ff, #e6f7ff);
+        margin: 0;
+        padding: 20px;
+    }
+    .container {
+        max-width: 1000px;
+        margin: auto;
+        background: #ffffff;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    h1 {
+        text-align: center;
+        color: #2c3e50;
+        margin-bottom: 10px;
+    }
+    .announcement {
+        background: #fef6e4;
+        border-left: 6px solid #f4a261;
+        padding: 15px;
+        margin-bottom: 25px;
+        font-weight: bold;
+        border-radius: 6px;
+    }
+    .locations {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+    }
+    .card {
+        border: 1px solid #ddd;
+        padding: 18px;
+        border-radius: 12px;
+        background: #fff;
+        transition: transform 0.2s ease;
+    }
+    .card:hover {
+        transform: translateY(-5px);
+    }
+    .card h3 {
+        margin-top: 0;
+        color: #1d3557;
+    }
+    iframe {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .btn {
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        padding: 12px;
+        background: #457b9d;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: bold;
+    }
+    .btn:hover {
+        background: #1d3557;
+    }
+</style>
+</head>
+
+<body>
+<div class="container">
+    <h1>Doctor Appointment</h1>
+
+    <div class="announcement" id="announcement">
+        🩺 Clinic timings start from 8:30 AM. Please check location-wise visiting days.
+    </div>
+
+    <div class="locations">
+
+        <!-- Rohini -->
+        <div class="card">
+            <h3 id="loc1">Rohini Clinic</h3>
+            <p>
+                📍 C8/54, Sector 8, Rohini<br>
+                ⏰ 8:30 AM onwards<br>
+                📅 Monday & Friday
+            </p>
+
+            <iframe
+                src="https://www.google.com/maps?q=C8/54,%20Sector%208,%20Rohini,%20Delhi&output=embed"
+                width="100%"
+                height="180"
+                style="border:0; border-radius:8px;"
+                loading="lazy">
+            </iframe>
+
+            <a class="btn" href="https://drmariabooking.com/" target="_blank">
+                Book Appointment
+            </a>
+        </div>
+
+        <!-- Janak Puri -->
+        <div class="card">
+            <h3 id="loc2">Janak Puri Clinic</h3>
+            <p>
+                📍 C-4C, 368, Adjacent to Khushwaha Bakery, Janak Puri<br>
+                ⏰ 8:30 AM onwards<br>
+                📅 Tuesday & Saturday
+            </p>
+
+            <iframe
+                src="https://www.google.com/maps?q=C-4C,%20368,%20Janak%20Puri,%20Delhi&output=embed"
+                width="100%"
+                height="180"
+                style="border:0; border-radius:8px;"
+                loading="lazy">
+            </iframe>
+
+            <a class="btn" href="https://drmariabooking.com/" target="_blank">
+                Book Appointment
+            </a>
+        </div>
+
+        <!-- Hastsal -->
+        <div class="card">
+            <h3 id="loc3">Hastsal Clinic</h3>
+            <p>
+                📍 386, Group-1, Janta Flats, Hastsal<br>
+                ⏰ 8:30 AM onwards<br>
+                📅 Thursday
+            </p>
+
+            <iframe
+                src="https://www.google.com/maps?q=386,%20Group-1,%20Janta%20Flats,%20Hastsal,%20Delhi&output=embed"
+                width="100%"
+                height="180"
+                style="border:0; border-radius:8px;"
+                loading="lazy">
+            </iframe>
+
+            <a class="btn" href="https://drmariabooking.com/" target="_blank">
+                Book Appointment
+            </a>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    document.getElementById("loc1").innerText =
+        localStorage.getItem("loc1") || "Rohini Clinic";
+
+    document.getElementById("loc2").innerText =
+        localStorage.getItem("loc2") || "Janak Puri Clinic";
+
+    document.getElementById("loc3").innerText =
+        localStorage.getItem("loc3") || "Hastsal Clinic";
+
+    document.getElementById("announcement").innerText =
+        localStorage.getItem("announcement") ||
+        "🩺 Clinic timings start from 8:30 AM. Please check location-wise visiting days.";
+</script>
+
+</body>
+</html>
