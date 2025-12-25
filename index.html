@@ -130,15 +130,13 @@
     background: #f9fafb;
     padding: 60px 20px;
 }
-
-.hero-inner {
-    max-width: 1200px;
+    .hero-inner {
+    max-width: 900px;
     margin: auto;
-    display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 40px;
-    align-items: center;
+    display: block;
+    text-align: left;
 }
+
 
 .hero h1 {
     font-size: 40px;
@@ -199,15 +197,18 @@
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 900px) {
-    .hero-inner {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
+   
     .hero-actions {
         justify-content: center;
         flex-wrap: wrap;
     }
 }
+    @media (max-width: 768px) {
+    .hero-inner {
+        text-align: center;
+    }
+}
+
     /* ===== FOOTER ===== */
 .footer {
     background: #1f2937;
@@ -366,6 +367,50 @@
         text-align: center;
     }
 }
+    /* ===== HOMEOPATHY IMAGE GALLERY ===== */
+.gallery-section {
+    background: #ffffff;
+    padding: 60px 20px;
+}
+
+.gallery-inner {
+    max-width: 1200px;
+    margin: auto;
+    text-align: center;
+}
+
+.gallery-inner h2 {
+    font-size: 28px;
+    color: #1f2937;
+    margin-bottom: 8px;
+}
+
+.gallery-subtitle {
+    font-size: 16px;
+    color: #6b7280;
+    margin-bottom: 35px;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-grid img:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
 
 
 </style>
@@ -433,12 +478,25 @@
         </div>
 
         <!-- RIGHT -->
-        <div class="doctor-photo">
-            Doctor Photo
-        </div>
+       
 
     </div>
 </div>
+<!-- HOMEOPATHY IMAGE GALLERY -->
+<section class="gallery-section">
+    <div class="gallery-inner">
+        <h2>Natural Homeopathy Care</h2>
+        <p class="gallery-subtitle">
+            Safe, natural and holistic homeopathic treatment for long-term wellness
+        </p>
+
+        <div class="gallery-grid">
+            <img src="homeopathy1.jpg" alt="Homeopathy Medicine Bottles">
+            <img src="homeopathy2.jpg" alt="Homeopathy Remedies">
+            <img src="homeopathy3.jpg" alt="Natural Homeopathy Treatment">
+        </div>
+    </div>
+</section>
 
 <div id="clinic"class="container">
     <h1>Doctor's Clinic</h1>
