@@ -1,122 +1,69 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Doctor Admin Panel</title>
-
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        background: #f1f5f9;
-        padding: 20px;
-    }
-    .container {
-        max-width: 700px;
-        margin: auto;
-        background: #ffffff;
-        padding: 25px;
-        border-radius: 12px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    }
-    h2 {
-        text-align: center;
-        color: #1f2937;
-    }
-    input, textarea, button {
-        width: 100%;
-        padding: 12px;
-        margin-top: 10px;
-        border-radius: 8px;
-        border: 1px solid #ccc;
-        font-size: 14px;
-    }
-    button {
-        background: #2563eb;
-        color: #fff;
-        font-size: 16px;
-        font-weight: bold;
-        cursor: pointer;
-        border: none;
-        margin-top: 15px;
-    }
-    button:hover {
-        background: #1e40af;
-    }
-    .hidden {
-        display: none;
-    }
-    .error {
-        color: red;
-        text-align: center;
-        margin-top: 10px;
-    }
-</style>
-</head>
-
-<body>
-<div class="container">
-
-    <!-- Login Section -->
-    <div id="loginBox">
-        <h2>Doctor Login</h2>
-        <input type="text" id="username" placeholder="Username">
-        <input type="password" id="password" placeholder="Password">
-        <button onclick="login()">Login</button>
-        <div id="error" class="error"></div>
-    </div>
-
-    <!-- Admin Panel -->
-    <div id="adminPanel" class="hidden">
-        <h2>Clinic Management</h2>
-
-        <label>Clinic Name 1</label>
-        <input id="loc1" placeholder="Rohini Clinic">
-
-        <label>Clinic Name 2</label>
-        <input id="loc2" placeholder="Janak Puri Clinic">
-
-        <label>Clinic Name 3</label>
-        <input id="loc3" placeholder="Hastsal Clinic">
-
-        <label>Announcement</label>
-        <textarea id="announcement" rows="4"
-            placeholder="Any important update for patients"></textarea>
-
-        <button onclick="saveData()">Save Changes</button>
-    </div>
-</div>
-
 <script>
-    function login() {
-        const user = document.getElementById("username").value;
-        const pass = document.getElementById("password").value;
-
-        if (user === "doctor" && pass === "doctor123") {
-            document.getElementById("loginBox").style.display = "none";
-            document.getElementById("adminPanel").classList.remove("hidden");
-            loadData();
-        } else {
-            document.getElementById("error").innerText = "Invalid username or password";
-        }
+function login() {
+    if (
+        document.getElementById("username").value === "doctor" &&
+        document.getElementById("password").value === "doctor123"
+    ) {
+        document.getElementById("loginBox").style.display = "none";
+        document.getElementById("adminPanel").classList.remove("hidden");
+        loadData();
+    } else {
+        document.getElementById("error").innerText = "Invalid username or password";
     }
+}
 
-    function loadData() {
-        document.getElementById("loc1").value = localStorage.getItem("loc1") || "";
-        document.getElementById("loc2").value = localStorage.getItem("loc2") || "";
-        document.getElementById("loc3").value = localStorage.getItem("loc3") || "";
-        document.getElementById("announcement").value =
-            localStorage.getItem("announcement") || "";
-    }
+function loadClinic(id, defaultData) {
+    return JSON.parse(localStorage.getItem(id)) || defaultData;
+}
 
-    function saveData() {
-        localStorage.setItem("loc1", document.getElementById("loc1").value);
-        localStorage.setItem("loc2", document.getElementById("loc2").value);
-        localStorage.setItem("loc3", document.getElementById("loc3").value);
-        localStorage.setItem("announcement", document.getElementById("announcement").value);
+function loadData() {
+    const clinic1 = loadClinic("clinic1", {});
+    const clinic2 = loadClinic("clinic2", {});
+    const clinic3 = loadClinic("clinic3", {});
 
-        alert("✅ Changes saved successfully!");
-    }
+    document.getElementById("c1_name").value = clinic1.name || "";
+    document.getElementById("c1_address").value = clinic1.address || "";
+    document.getElementById("c1_time").value = clinic1.time || "";
+    document.getElementById("c1_days").value = clinic1.days || "";
+
+    document.getElementById("c2_name").value = clinic2.name || "";
+    document.getElementById("c2_address").value = clinic2.address || "";
+    document.getElementById("c2_time").value = clinic2.time || "";
+    document.getElementById("c2_days").value = clinic2.days || "";
+
+    document.getElementById("c3_name").value = clinic3.name || "";
+    document.getElementById("c3_address").value = clinic3.address || "";
+    document.getElementById("c3_time").value = clinic3.time || "";
+    document.getElementById("c3_days").value = clinic3.days || "";
+
+    document.getElementById("announcement").value =
+        localStorage.getItem("announcement") || "";
+}
+
+function saveData() {
+    localStorage.setItem("clinic1", JSON.stringify({
+        name: c1_name.value,
+        address: c1_address.value,
+        time: c1_time.value,
+        days: c1_days.value
+    }));
+
+    localStorage.setItem("clinic2", JSON.stringify({
+        name: c2_name.value,
+        address: c2_address.value,
+        time: c2_time.value,
+        days: c2_days.value
+    }));
+
+    localStorage.setItem("clinic3", JSON.stringify({
+        name: c3_name.value,
+        address: c3_address.value,
+        time: c3_time.value,
+        days: c3_days.value
+    }));
+
+    localStorage.setItem("announcement", announcement.value);
+
+    alert("✅ All clinic details updated successfully!");
+}
 </script>
-
-</body>
-</html>
