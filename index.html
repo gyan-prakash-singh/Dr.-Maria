@@ -208,6 +208,166 @@
         flex-wrap: wrap;
     }
 }
+    /* ===== FOOTER ===== */
+.footer {
+    background: #1f2937;
+    color: #d1d5db;
+    margin-top: 60px;
+}
+
+.footer-inner {
+    max-width: 1200px;
+    margin: auto;
+    padding: 40px 20px 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 30px;
+}
+
+.footer-col h3 {
+    color: #ffffff;
+    font-size: 18px;
+    margin-bottom: 12px;
+}
+
+.footer-col p,
+.footer-col li {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-col li {
+    margin-bottom: 6px;
+}
+
+.footer-col a {
+    color: #93c5fd;
+    text-decoration: none;
+}
+
+.footer-col a:hover {
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    background: #111827;
+    text-align: center;
+    padding: 15px 20px;
+    font-size: 13px;
+    color: #9ca3af;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .footer-inner {
+        text-align: center;
+    }
+}
+/* ===== MARQUEE STYLING ===== */
+.clinic-marquee {
+    background: #fff3cd;
+    color: #856404;
+    font-size: 18px;        /* Bigger text */
+    font-weight: 600;       /* Bold & readable */
+    padding: 10px 0;
+    border-bottom: 1px solid #ffe69c;
+}
+    /* ===== ABOUT + RATING SECTION ===== */
+.about-rating-section {
+    background: #f9fafb;
+    padding: 60px 20px;
+}
+
+.about-rating-inner {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    gap: 40px;
+    align-items: center;
+}
+
+/* ABOUT CONTENT */
+.about-content h2 {
+    font-size: 28px;
+    color: #1f2937;
+    margin-bottom: 15px;
+}
+
+.about-content p {
+    font-size: 16px;
+    color: #4b5563;
+    line-height: 1.7;
+    margin-bottom: 14px;
+}
+
+/* RATING CARD */
+.rating-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+}
+
+.rating-card h3 {
+    margin-top: 0;
+    color: #1f2937;
+}
+
+.rating-subtitle {
+    color: #6b7280;
+    font-size: 14px;
+    margin-bottom: 18px;
+}
+
+.rating-score {
+    font-size: 38px;
+    font-weight: 700;
+    color: #16a34a;
+    margin-bottom: 8px;
+}
+
+.rating-score span {
+    font-size: 18px;
+    color: #374151;
+}
+
+.rating-source {
+    font-size: 14px;
+    color: #374151;
+    margin-bottom: 18px;
+}
+
+.rating-btn {
+    display: inline-block;
+    padding: 12px 22px;
+    border-radius: 8px;
+    background: #2563eb;
+    color: #ffffff;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.rating-btn:hover {
+    background: #1e40af;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .about-rating-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+}
+
+
 </style>
 
 </style>
@@ -228,14 +388,19 @@
         <div class="nav-menu">
             <a href="#">Home</a>
             <a href="#clinic">Clinics</a>
-            <a href="#">About</a>
+            <a href="#About">About</a>
            
         </div>
     </div>
 </div>
-<marquee>The Clinic will remain close from 23rd Dec till 2nd Jan-2026</marquee>
+<marquee class="clinic-marquee">
+    🚨 The Clinic will remain closed from 
+    <strong>23rd December</strong> till 
+    <strong>2nd January 2026</strong>
+</marquee>
+
 <!-- HERO -->
-<div class="hero">
+<div id="home"class="hero">
     <div class="hero-inner">
 
         <!-- LEFT -->
@@ -352,33 +517,107 @@
 
     </div>
 </div>
-<!-- JUSTDIAL RATING -->
-<div id="About" class="rating-section">
-    <div class="">Dr. Maria Filbert Homeopathy Clinic is a clean, hygienic, and well-maintained medical facility designed to ensure patient comfort and safety. The clinic follows high standards of cleanliness, creating a calm and reassuring environment for every visit.
+<!-- ABOUT + JUSTDIAL RATING -->
+<section id="About" class="about-rating-section">
 
-With over 20+ years of clinical experience, Dr. Maria Filbert is a highly trusted and experienced Homeopathy physician. Her deep understanding of homeopathic medicine, combined with personalized patient care, helps address health concerns effectively by treating the root cause of illness.
-    </div>
-    <div class="rating-inner">
-        <div class="rating-left">
-            <h2>Patient Reviews & Ratings</h2>
-            <p>Verified patient feedback from Justdial</p>
+    <div class="about-rating-inner">
+
+        <!-- ABOUT CONTENT -->
+        <div class="about-content">
+            <h2>About Dr. Maria Filbert</h2>
+            <p>
+                Dr. Maria Filbert Homeopathy Clinic is a clean, hygienic, and
+                well-maintained medical facility designed to ensure patient
+                comfort and safety. The clinic follows excellent standards of
+                cleanliness, creating a calm and reassuring environment for
+                every visit.
+            </p>
+            <p>
+                With <strong>over 20+ years of clinical experience</strong>,
+                Dr. Maria Filbert is a highly trusted and experienced
+                Homeopathy physician. Her deep understanding of homeopathic
+                medicine, combined with personalized patient care, focuses on
+                treating the <strong>root cause</strong> of illness for
+                long-term wellness.
+            </p>
         </div>
 
-        <div class="rating-right">
+        <!-- RATING CARD -->
+        <div class="rating-card">
+            <h3>Patient Reviews & Ratings</h3>
+            <p class="rating-subtitle">
+                Verified patient feedback from Justdial
+            </p>
+
             <div class="rating-score">
                 ⭐ 4.7 <span>/ 5</span>
             </div>
+
             <div class="rating-source">
                 Rated on <strong>Justdial</strong>
             </div>
-            <a href="https://www.justdial.com/Delhi/Dr-Maria-Filbert-Homeopathy-Clinic-Janakpuri/011PXX11-XX11-181226000248-U9L1_BZDET/reviews"
-               target="_blank"
-               class="rating-btn">
+
+            <a
+                href="https://www.justdial.com/Delhi/Dr-Maria-Filbert-Homeopathy-Clinic-Janakpuri/011PXX11-XX11-181226000248-U9L1_BZDET/reviews"
+                target="_blank"
+                class="rating-btn">
                 View Reviews
             </a>
         </div>
+
     </div>
-</div>
+
+</section>
+
+    <!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-inner">
+
+        <!-- Doctor Info -->
+        <div class="footer-col">
+            <h3>Dr. Maria Filbert</h3>
+            <p>
+                <strong>B.H.M.S (Del)</strong> – Homeopathy<br>
+                Experienced Homeopathy doctor with
+                <strong>20+ years of clinical experience</strong>,
+                offering safe, natural and personalized treatment.
+            </p>
+        </div>
+
+        <!-- Contact -->
+        <div class="footer-col">
+            <h3>Contact</h3>
+            <p>
+                📍 Delhi, India<br>
+                📞 <a href="tel:+919811604637">+91 9811 604 637</a><br>
+                🌐 <a href="https://drmariabooking.com/" target="_blank">
+                    drmariabooking.com
+                </a>
+            </p>
+        </div>
+
+        <!-- Clinics -->
+        <div class="footer-col">
+            <h3>Clinic Locations</h3>
+            <ul>
+                <li>Rohini</li>
+                <li>Janak Puri</li>
+                <li>Hastsal</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        © <span id="year"></span> Dr. Maria Filbert Homeopathy Clinic.  
+        All Rights Reserved.
+        <br>
+        <small>
+            Disclaimer: Results of homeopathic treatments may vary from person to person.
+        </small>
+    </div>
+</footer>
+
 
 <script>
     const clinics = [
